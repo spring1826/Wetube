@@ -29,7 +29,7 @@ const routes = {
   users: USERS,
   userDetail: USER_DETAIL,
   editProfile: USER_PROFILE,
-  changepassword: CHANGE_PASSWORD,
+  changePassword: CHANGE_PASSWORD,
   videos: VIDEOS,
   upload: UPLOAD,
   videoDetail: VIDEO_DETAIL,
