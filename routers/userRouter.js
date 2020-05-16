@@ -12,7 +12,7 @@ const userRouter = express.Router(); //router는 작은 단위의 행동들을 �
 // userRouter.get(routes.users, users);
 userRouter.get(routes.editProfile, editProfile);
 userRouter.get(routes.changePassword, changePassword);
-userRouter.get(routes.userDetail, userDetail);
+userRouter.get(routes.userDetail(), userDetail);
 
 export default userRouter;
 //MVC
