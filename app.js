@@ -3,18 +3,20 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
-// import { userRouter } from "./routers/userRouter"; // export default로 안해서 중괄호사용
+import { localsMiddleware } from "./middlewares";
+import routes from "./routes";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
-import routes from "./routes";
 const app = express();
 
+app.use(helmet()); // 안전, 보안
+app.set("view engine", "pug");
 app.use(cookieParser()); // 유저로부터 받은 쿠키 이해하는 방법
 app.use(bodyParser.json()); // 유저로부터 받은 데이터 이해하는 방법
 app.use(bodyParser.urlencoded({ extended: true })); // 유저로부터 받은 데이터 이해하는 방법(form)
-app.use(helmet()); // 안전, 보안
 app.use(morgan("dev")); // logging기능
+app.use(localsMiddleware);
 
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
